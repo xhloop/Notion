@@ -1,207 +1,257 @@
-html {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-}
+<head>
 
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Inter", Arial;
-  background: #f6f8ff;
-}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-.button {
-  --color: #f6f8ff;
-  --color-hover: #f6f8ff;
-  --color-active: #fff;
-  --icon: #e1e6f9;
-  --icon-hover: #eceffc;
-  --icon-active: #fff;
-  --background: #404660;
-  --background-hover: #393e57;
-  --background-active: #275efe;
-  --shadow: rgba(0, 17, 119, 0.1);
-  display: block;
-  outline: none;
-  cursor: pointer;
-  position: relative;
-  border: 0;
-  background: none;
-  padding: 8px 20px 8px 24px;
-  border-radius: 9px;
-  line-height: 27px;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--color);
-  transition: color 0.2 linear;
-}
+  <style>
+    :root {
+      --my-color:#34495e;
+      --my-color-accent:#2c3e50;
+      --black: #3c3c3c;
+      --black-accent: #2d2d2d;
+      --blue: #809bce;
+      --blue-accent: #5c6f94;
+      --purple: #8a508f;
+      --purple-accent: #5d3661;
+      --mint: #b8e0d4;
+      --mint-accent: #8ba89f;
+      --pink: #eac4d5;
+      --pink-accent: #b495a3;
+      --green: #74a892;
+      --green-accent: #5e8675;
+      --red:#d74a49;
+      --red-accent:#b53f3f;
+      --orange:#d35400;
+      --orange-accent:#9e4102;
+      --yellow:#f1c40f;
+      --yellow-accent:#bd9a0c;
+    }
 
-.button:hover {
-  --icon: var(--icon-hover);
-  --color: var(--color-hover);
-  --background: var(--background-hover);
-}
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
 
-.button:active {
-  --scale: 0.95;
-}
+    i {
+      padding-right: 2px;
+    }
 
-.button:not(.liked):hover {
-  --hand-rotate: 8deg;
-  --hand-thumb-1: -12deg;
-  --hand-thumb-2: 36deg;
-}
+    .btn {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Manrope';
+      display: inline-block;
+      margin: 10px;
+    }
 
-.button.liked {
-  --span-x: 2px;
-  --span-d-o: 1;
-  --span-d-x: 0;
-  --icon: var(--icon-active);
-  --color: var(--color-active);
-  --background: var(--background-active);
-  --hand-name: hand;
-}
+    .my-color {
+      background-color: var(--my-color);
+    }
 
-.button .hand,
-.button span {
-  z-index: 1;
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-}
+    .my-color:hover {
+      background-color: var(--my-color-accent);
+    }
 
-.button::after {
-  content: "";
-  min-width: 103px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  transition: background 0.2s linear, transform 0.2s, box-shadow 0.2s linear;
-  transform: scale(var(--scale, 1)) translateZ(0);
-  background: var(--background);
-  box-shadow: 0 4px 8px var(--shadow), 0 8px 20px var(--shadow);
-}
+    .my-color.threeD {
+      box-shadow: 0px 4px 0px var(--my-color-accent);
+    }
 
-.button .emitter {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateZ(-4px);
-}
+    .my-color.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--my-color-accent);
+    }
+    .black {
+      background-color: var(--black);
+    }
 
-.button .emitter div {
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  border-radius: 2px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform-style: preserve-3d;
-  background: var(--b, none);
-}
+    .black:hover {
+      background-color: var(--black-accent);
+    }
 
-.button .hand {
-  width: 11px;
-  height: 11px;
-  border-radius: 2px 0 0 0;
-  background: var(--icon);
-  margin: 10px 8px 0 0;
-  transform-origin: -5px -1px;
-  transition: transform 0.25s, background 0.2s linear;
-  transform: rotate(var(--hand-rotate, 0deg)) translateZ(0);
-  animation: var(--hand-name, none) 0.5s linear;
-}
+    .black.threeD {
+      box-shadow: 0px 4px 0px var(--black-accent);
+    }
 
-.button .hand::before,
-.button .hand::after {
-  content: "";
-  background: var(--icon);
-  position: absolute;
-  transition: background 0.2s linear, box-shadow 0.2s linear;
-}
+    .black.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--black-accent);
+    }
 
-.button .hand::before {
-  left: -5px;
-  bottom: 0;
-  height: 12px;
-  width: 4px;
-  border-radius: 1px 1px 0 1px;
-}
+    .blue {
+      background-color: var(--blue);
+    }
 
-.button .hand::after {
-  right: -3px;
-  top: 0;
-  width: 4px;
-  height: 4px;
-  border-radius: 0 2px 2px 0;
-  background: var(--icon);
-  box-shadow: -0.5px 4px 0 var(--icon), -1px 8px 0 var(--icon), -1.5px 12px 0 var(--icon);
-  transform: scaleY(0.6825);
-  transform-origin: 0 0;
-}
+    .blue:hover {
+      background-color: var(--blue-accent);
+    }
 
-.button .hand .thumb {
-  background: var(--icon);
-  width: 10px;
-  height: 4px;
-  border-radius: 2px;
-  transform-origin: 2px 2px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: transform 0.25s, background 0.2s linear;
-  transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
-}
+    .blue.threeD {
+      box-shadow: 0px 4px 0px var(--blue-accent);
+    }
 
-.button .hand .thumb::before {
-  content: "";
-  height: 4px;
-  width: 7px;
-  border-radius: 2px;
-  transform-origin: 2px 2px;
-  background: var(--icon);
-  position: absolute;
-  left: 7px;
-  top: 0;
-  transition: transform 0.25s, background 0.2s linear;
-  transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
-}
+    .blue.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--blue-accent);
+    }
 
-.button .hand span,
-.button span span {
-  opacity: var(--span-d-o, 0);
-  transition: transform 0.25s, opacity 0.2s linear;
-  transform: translateX(var(--span-d-x, 2px)) translateZ(0);
-}
+    .purple {
+      background-color: var(--purple);
+    }
 
-.button span {
-  transition: transform 0.25s;
-  transform: translateX(var(--span-x, 4px)) translateZ(0);
-}
+    .purple:hover {
+      background-color: var(--purple-accent);
+    }
 
-/* Animation */
-@keyframes hand {
-  30% {
-    transform: rotate(-14deg) translateZ(0);
-  }
+    .purple.threeD {
+      box-shadow: 0px 4px 0px var(--purple-accent);
+    }
 
-  65% {
-    transform: rotate(7deg) translateZ(0);
-  }
+    .purple.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--purple-accent);
+    }
 
-  100% {
-    transform: rotate(0deg) translateZ(0);
-  }
-}
+    .mint {
+      background-color: var(--mint);
+    }
+
+    .mint:hover {
+      background-color: var(--mint-accent);
+    }
+
+    .mint.threeD {
+      box-shadow: 0px 4px 0px var(--mint-accent);
+    }
+
+    .mint.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--mint-accent);
+    }
+
+    .pink {
+      background-color: var(--pink);
+    }
+
+    .pink:hover {
+      background-color: var(--pink-accent);
+    }
+
+    .pink.threeD {
+      box-shadow: 0px 4px 0px var(--pink-accent);
+    }
+
+    .pink.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--pink-accent);
+    }
+
+    .green {
+      background-color: var(--green);
+    }
+
+    .green:hover {
+      background-color: var(--green-accent);
+    }
+
+    .green.threeD {
+      box-shadow: 0px 4px 0px var(--green-accent);
+    }
+
+    .green.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--green-accent);
+    }
+
+    .red {
+      background-color: var(--red);
+    }
+
+    .red:hover {
+      background-color: var(--red-accent);
+    }
+
+    .red.threeD {
+      box-shadow: 0px 4px 0px var(--red-accent);
+    }
+
+    .red.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--red-accent);
+    }
+
+    .orange {
+      background-color: var(--orange);
+    }
+
+    .orange:hover {
+      background-color: var(--orange-accent);
+    }
+
+    .orange.threeD {
+      box-shadow: 0px 4px 0px var(--orange-accent);
+    }
+
+    .orange.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--orange-accent);
+    }
+
+    .yellow {
+      background-color: var(--yellow);
+    }
+
+    .yellow:hover {
+      background-color: var(--yellow-accent);
+    }
+
+    .yellow.threeD {
+      box-shadow: 0px 4px 0px var(--yellow-accent);
+    }
+
+    .yellow.threeD:active {
+      box-shadow: 0 0;
+      background-color: var(--yellow-accent);
+    }
+
+    .rounded {
+      border-radius: 20px;
+    }
+
+    .small {
+      padding: 5px 20px;
+      font-size: 10px;
+    }
+
+    .mid {
+      padding: 10px 40px;
+      font-size: 12px;
+    }
+
+    .large {
+      padding: 15px 60px;
+      font-size: 18px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <button class="btn small mint rounded" type="button" onclick="navigate()"> <i class="fa-regular fa-star"></i> Like</button>
+  
+  <script>
+    function navigate() {
+      window.open("https://example.com", '_blank').focus();
+    }
+  </script>
+
+</body>
+
+</html>
