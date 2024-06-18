@@ -22,6 +22,7 @@ body {
   transition: transform 0.6s;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 15px; /* Curved edges */
 }
 
 .flip-card:hover .flip-card-inner {
@@ -34,29 +35,29 @@ body {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  border-radius: 15px; /* Curved edges */
 }
 
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  border-radius: 15px; /* Curved edges */
 }
 
 .flip-card-back {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+  border-radius: 15px; /* Curved edges */
 }
 </style>
 </head>
 <body>
 
-<h1>Card Flip with Text</h1>
-<h3>Hover over the image below:</h3>
-
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+      <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;border-radius: 15px;"> <!-- Curved edges for the image -->
     </div>
     <div class="flip-card-back">
       <h1>John Doe</h1> 
